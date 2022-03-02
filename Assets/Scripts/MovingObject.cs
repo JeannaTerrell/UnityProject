@@ -9,7 +9,7 @@ public enum Direction
 }
 
 
-public class PlatformMovement : MonoBehaviour
+public class MovingObject : MonoBehaviour
 {
     public Direction Direction;
     public int Speed;
@@ -20,6 +20,7 @@ public class PlatformMovement : MonoBehaviour
     private float _startingPositionY;
     private float _startingPositionX;
     private float _target;
+    private int _startingSpeed;
 
     private void Awake()
     {
@@ -35,6 +36,11 @@ public class PlatformMovement : MonoBehaviour
         {
             _target = _startingPositionX + Distance;
         }
+
+        _startingSpeed = Speed;
+
+        Pause(true);
+        Pause(false);
 
     }
 
@@ -56,6 +62,7 @@ public class PlatformMovement : MonoBehaviour
 
         if (position.y > _target && Speed > 0)
         {
+            OnReachedTarget();
             Speed = -Speed;
         }
         else if (position.y < _startingPositionY)
@@ -71,6 +78,7 @@ public class PlatformMovement : MonoBehaviour
 
         if (position.x > _target && Speed > 0)
         {
+            OnReachedTarget();
             Speed = -Speed;
         }
         else if (position.x < _startingPositionX)
@@ -78,5 +86,28 @@ public class PlatformMovement : MonoBehaviour
             Speed = -Speed;
         }
         _rb.velocity = new Vector2(Speed * Time.deltaTime, 0);
+    }
+
+    public void Pause(bool pause)
+    {
+        if (pause)
+        {
+            Speed = 0;
+        }
+        else
+        {
+            Speed = _startingSpeed;
+        }
+    }
+
+    public void changeSpeed(int newSpeed)
+    {
+        _startingSpeed = newSpeed;
+        Speed = newSpeed;
+    }
+
+    protected virtual void OnReachedTarget()
+    {
+        Debug.Log("Reached destination");
     }
 }
