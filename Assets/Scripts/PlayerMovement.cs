@@ -20,8 +20,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private int jumpCount;
 
+    //Called by the game engine at the start of the game
     private void Awake()
     {
+        //RigidBody2D is the class provided by the Unity engine to handle physics on game objects
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -30,28 +32,25 @@ public class PlayerMovement : MonoBehaviour
         jumpCount = 0;
     }
 
-    // Update is called once per frame
+    // Called by the game engine once per frame
     void Update()
     {
-        //get inputs
         ProcessInputs();
 
-        //Animate
         Animate();
 
     }
 
+    //Called up to 60 times per second by the game engine
     private void FixedUpdate()
     {
-        Debug.Log(jumpCount);
-
+        //Game engine funtion to check for objects within a circle at a specified point
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundObjects);
         if(isGrounded)
         {
-            //Debug.Log("RESET JUMP COUNT");
             jumpCount = 0;
         }
-        //move
+
         Move();
     }
 
@@ -59,12 +58,12 @@ public class PlayerMovement : MonoBehaviour
     {
         var x = new Vector2(0, 0);
 
+        //Applies a consistent velocity to a game object
         rb.velocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y);
         if(isJumping)
         {
             rb.AddForce(new Vector2(0f, jumpForce));
             jumpCount++;
-            Debug.Log("Executing jump");
         }
         isJumping = false;
     }
@@ -90,18 +89,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //Animate
     private void FlipCharacter()
     {
         facingRight = !facingRight;
+
+        //Rotates the game object on the y-axis
         transform.Rotate(0f, 180f, 0f);
     }
 
-    private void OnTriggerEnter2D(Collider2D coins)
-    {
-        if(coins.gameObject.CompareTag("Coins"))
-        {
-            Destroy(coins.gameObject);
-        }
-    }
 }

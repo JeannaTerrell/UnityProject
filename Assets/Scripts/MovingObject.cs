@@ -22,8 +22,10 @@ public class MovingObject : MonoBehaviour
     private float _target;
     private int _startingSpeed;
 
+    //Called by the game engine at the start of the game
     private void Awake()
     {
+        //RigidBody2D is the class provided by the Unity engine to handle physics on game objects
         _rb = GetComponent<Rigidbody2D>();
         _startingPositionY = transform.position.y;
         _startingPositionX = transform.position.x;
@@ -44,6 +46,7 @@ public class MovingObject : MonoBehaviour
 
     }
 
+    //Called up to 60 times per second by the game engine
     void FixedUpdate()
     {
         if (Direction == Direction.Vertical)
@@ -56,8 +59,10 @@ public class MovingObject : MonoBehaviour
         }
     }
 
+    //When direction is set to vertical the moving object moves upward until the target distance is reached then reverses back to starting position
     private void Vertical()
     {
+        //transform.postion represents the current location of an object in world space
         var position = transform.position;
 
         if (position.y > _target && Speed > 0)
@@ -72,6 +77,7 @@ public class MovingObject : MonoBehaviour
         _rb.velocity = new Vector2(0, Speed * Time.deltaTime);
     }
 
+    //When direction is set to horizontal, the moving object moves to one side until the target distance is reached then reverses back to the starting position
     private void Horizontal()
     {
         var position = transform.position;
@@ -88,6 +94,7 @@ public class MovingObject : MonoBehaviour
         _rb.velocity = new Vector2(Speed * Time.deltaTime, 0);
     }
 
+    
     public void Pause(bool pause)
     {
         if (pause)
