@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Mushroom : MonoBehaviour
 {
+    public int Damage = 5;
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
         {
             var healthSys = col.gameObject.GetComponent<HealthSystem>();
-            healthSys.TakeDamage(5);
+            healthSys.TakeDamage(Damage);
         }
     }
 }

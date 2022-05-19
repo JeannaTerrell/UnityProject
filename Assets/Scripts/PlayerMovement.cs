@@ -30,8 +30,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         jumpCount = 0;
-        HealthSystem healthSystem = new HealthSystem(100);
-        Debug.Log("Health: " +healthSystem.GetHealth());
     }
 
     // Called by the game engine once per frame

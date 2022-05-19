@@ -4,6 +4,7 @@ public class HealthSystem : MonoBehaviour {
     public int MaxHealth = 10;
     private int _health;
 
+
     private void Start()
     {
         _health = MaxHealth;
