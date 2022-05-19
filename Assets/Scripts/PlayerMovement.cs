@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         jumpCount = 0;
+        HealthSystem healthSystem = new HealthSystem(100);
+        Debug.Log("Health: " +healthSystem.GetHealth());
     }
 
     // Called by the game engine once per frame
@@ -96,5 +98,7 @@ public class PlayerMovement : MonoBehaviour
         //Rotates the game object on the y-axis
         transform.Rotate(0f, 180f, 0f);
     }
+
+   
 
 }

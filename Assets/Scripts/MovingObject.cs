@@ -115,6 +115,6 @@ public class MovingObject : MonoBehaviour
 
     protected virtual void OnReachedTarget()
     {
-        Debug.Log("Reached destination");
+        //Debug.Log("Reached destination");
     }
 }
