@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Mushroom : MonoBehaviour
 {
+    //public GameObject Shroom;
+
     public int Damage = 5;
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -13,4 +15,6 @@ public class Mushroom : MonoBehaviour
             healthSys.TakeDamage(Damage);
         }
     }
+
+    
 }
