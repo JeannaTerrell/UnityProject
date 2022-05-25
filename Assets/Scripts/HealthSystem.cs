@@ -16,13 +16,22 @@ public class HealthSystem : MonoBehaviour {
         return _health;
     }
 
-    public void TakeDamage(int damageAmt)
+    private void Update()
     {
-        _health -= damageAmt;
+        var myPos = transform.position;
+        if (myPos.y < -4.5)
+        {
+            _health = 0;
+        }
 
         if (_health <= 0)
         {
             SceneManager.LoadScene(0);
         }
+    }
+
+    public void TakeDamage(int damageAmt)
+    {
+        _health -= damageAmt;
     }
 }

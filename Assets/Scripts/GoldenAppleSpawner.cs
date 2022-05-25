@@ -7,7 +7,7 @@ public class GoldenAppleSpawner : MonoBehaviour
     public GameObject GoldenApple;
     public Vector3 appleSpawn1 = new Vector3(-15, 1, 0);
     public Vector3 appleSpawn2 = new Vector3(15, 1, 0);
-    int platformNum = 1;
+    int platformNum = 2;
 
     private GameObject _newApple;
 

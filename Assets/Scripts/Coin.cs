@@ -7,13 +7,9 @@ public class Coin : MonoBehaviour
     private void Update()
     {
         var myPos = transform.position;
-        if(myPos.y < -10)
-        
+        if(myPos.y < -4.5)
         {
-            if (gameObject == null)
-            {
-                Destroy(this.gameObject);
-            }
+            Destroy(this.gameObject);
         }
     }
 

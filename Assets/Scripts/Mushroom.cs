@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class Mushroom : MonoBehaviour
 {
-    //public GameObject Shroom;
+    private void Update()
+    {
+        var myPos = transform.position;
+        if (myPos.y < -4.5)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     public int Damage = 5;
     void OnTriggerEnter2D(Collider2D col)

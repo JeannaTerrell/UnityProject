@@ -22,5 +22,6 @@ public class PointSystem : MonoBehaviour
         _points += pointValue;
         Debug.Log("Points: " + _points);
     }
+
 }
 
