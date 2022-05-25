@@ -7,6 +7,5 @@ public class DestroyMovingObject : MovingObject
     protected override void OnReachedTarget()
     {
         Destroy(gameObject);
-        //Debug.Log("Object Destroyed");
     }
 }

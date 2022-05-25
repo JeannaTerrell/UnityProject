@@ -17,9 +17,10 @@ public class PointSystem : MonoBehaviour
         return _points;
     }
 
-    public void AddPoints(int coinValue)
+    public void AddPoints(int pointValue)
     {
-        _points += coinValue;
+        _points += pointValue;
         Debug.Log("Points: " + _points);
     }
 }
+

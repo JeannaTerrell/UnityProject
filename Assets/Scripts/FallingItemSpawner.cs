@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingItemSpawner : MonoBehaviour
+public class ItemSpawner : MonoBehaviour
 {
     public GameObject Mushroom;
     public GameObject Coin;
@@ -32,16 +32,20 @@ public class FallingItemSpawner : MonoBehaviour
             pos = new Vector3(x, y, z);
             transform.position = pos;
 
+            Debug.Log("RSA: " + RandomSpawnAmt);
 
             if (_MushroomCount % RandomSpawnAmt == 0)
             {
                 Instantiate(Coin, transform.position, rotation);
                 _MushroomCount = 1;
                 RandomSpawnAmt = Random.Range(SpawnAmtMin, SpawnAmtMax);
+
+                Debug.Log("Mushroom Count: " + _MushroomCount);
             }
             else
             {
                 Instantiate(Mushroom, transform.position, rotation);
+                Debug.Log("Mushroom Count: " + _MushroomCount);
                 _MushroomCount++;
             }
 

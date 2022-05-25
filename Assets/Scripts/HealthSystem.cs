@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour {
     public int MaxHealth = 10;
@@ -21,7 +22,7 @@ public class HealthSystem : MonoBehaviour {
 
         if (_health <= 0)
         {
-            UnityEngine.Debug.Log("Player has died");
+            SceneManager.LoadScene(0);
         }
     }
 }
